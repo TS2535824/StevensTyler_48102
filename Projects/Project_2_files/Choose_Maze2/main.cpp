@@ -1,10 +1,4 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
  * File:   main.cpp
  * Author: Tyler
  *
@@ -30,10 +24,12 @@ int main(int argc, char** argv) {
                                        {'m', 'n', 'o'},
                                        {'p', 'q', 'r'}};
  
-    do {
-        cout << "Choose either 1 or 2 \n";
-        cin >> choose;
-    } while (!(choose == 1 || choose == 2));
+    do{
+		cout << "Enter choice: 1,2, or 3";
+		cin >> choose;
+		cin.clear();
+		cin.ignore(3, '\n');
+	} while(choose != 1 && choose != 2 && choose != 3);
  
     switch (choose) {
         case 1:
@@ -43,7 +39,6 @@ int main(int argc, char** argv) {
                     maze[i][j] = maze1[i][j];
                 }
             }
-           
             break;
            
         case 2:  
@@ -51,26 +46,17 @@ int main(int argc, char** argv) {
             for (int i = 0; i < SIZE; i++){
                 for (int j = 0; j < COL; j++){
                     maze[i][j] = maze2[i][j];
-                }
+              }
             }
-           
             break;
-           
-        default:
-            //Look at case 1 (but used by default)
-            for (int i = 0; i < SIZE; i++){
-                for (int j = 0; j < COL; j++){
-                    maze[i][j] = maze1[i][j];
-                }
-            }
     }
  
     cout << endl;
    
     for (int i = 0; i < SIZE; i++){
-        //cout<<endl;
+        cout<<endl;
         for (int j = 0; j < COL; j++){
-            cout << maze[i][j] << (j == 2 ? "\n" : " ");
+            cout << maze[i][j];
         }
     }
  

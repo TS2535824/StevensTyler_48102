@@ -25,7 +25,7 @@ int main() {
     unsigned char thief = 'X';//symbol for thief position
     unsigned char action;//user input. asdw to move and q to quit
     int posx = 1, posy = 1;//default player
-    int choose;
+    unsigned short choose;
     bool quit=false;
     unsigned char  maze[H][W]; //2D Array Maze
     
@@ -84,10 +84,12 @@ int main() {
     cout<<"---------------------------\n";
     
     //Choose your maze
-      while(!(choose==1||choose==2)){
-         cout<<"Choose maze 1 , 2, or 3 "<<endl;
-         cin>>choose;
-      };
+    do{
+        cout << "Enter choice: 1,2, or 3";
+        cin >> choose;
+        cin.clear();
+        cin.ignore(3, '\n');
+    } while(choose != 1 && choose != 2 && choose != 3);
     
 
      switch(choose){
@@ -107,23 +109,22 @@ int main() {
                 }
             }
              break;
-//         case 3:
-//             //Copy contents of chosen map's 2D array elements to main array
-//            for (int i = 0; i < H; i++){
-//                for (int j = 0; j < W; j++){
-//                    maze[i][j] = maze3[i][j];
-//                }
-//            }
-            cout<<":("<<endl;
-             break;
-         default:
+         case 3:
              //Copy contents of chosen map's 2D array elements to main array
-             cout<<":("<<endl;
             for (int i = 0; i < H; i++){
-                for (int j = 0; j < W ; j++){
+                for (int j = 0; j < W; j++){
                     maze[i][j] = maze3[i][j];
                 }
             }
+             break;
+//         default:
+//             //Copy contents of chosen map's 2D array elements to main array
+//             cout<<":("<<endl;
+//            for (int i = 0; i < H; i++){
+//                for (int j = 0; j < W ; j++){
+//                    maze[i][j] = maze3[i][j];
+//                }
+//            }
      }
      
     //Quits game when user enter q
@@ -243,6 +244,7 @@ int main() {
 void titleScreen(){
     //Declaration of Variables
     char play;//any input will execute program
+    int number;
     string title;//variable for the title
     ifstream inFile;  //declare input file object
     inFile.open("files.txt"); //open input file object "file.txt"
@@ -256,7 +258,9 @@ void titleScreen(){
    }else {
         cout << "Error with file" << endl;
    }
-   
+    cout<<"Enter number ";
+    cin>>number;
+    cout<<endl;
    //User input starts game
     cin>>play;
    
